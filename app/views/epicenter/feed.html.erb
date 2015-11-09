@@ -1,0 +1,20 @@
+<h1>Your Twitter Feed</h1>
+<p>Welcome, 
+	<%= link_to show_user_path do %>
+	@<%= current_user.username %>!</p>
+	<% end %>
+<p>Here is what your friends are saying:</p>
+
+<div class="row">
+	<% @following_tweets.each do |tweet| %>
+		<div class="col-md-12">
+			<div class="well">
+			 <p><strong><%= tweet.user.name %></strong> @
+				<%= link_to show_user_path(id: tweet.user_id) do %>
+			 		<%= tweet.user.username %></p>
+			 	<% end %>
+			 <p><%= tweet.message %></p>
+			</div>
+		</div>
+	<% end %>
+</div>
