@@ -7,6 +7,12 @@ Rails.application.routes.draw do
 
   get 'unfollow' => 'epicenter#unfollow'
 
+  get 'all_users' => 'epicenter#all_users'
+
+  get 'epicenter/jquery_practice' 
+
+  get 'tag_index' => 'epicenter#tag_index'
+
   resources :tweets
   devise_for :users
 

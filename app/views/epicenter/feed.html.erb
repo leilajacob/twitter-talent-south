@@ -1,13 +1,31 @@
-<h1>Your Twitter Feed</h1>
-<p>Welcome, 
-	<%= link_to show_user_path do %>
-	@<%= current_user.username %>!</p>
-	<% end %>
-<p>Here is what your friends are saying:</p>
-
 <div class="row">
-	<% @following_tweets.each do |tweet| %>
-		<div class="col-md-12">
+
+	<div class="col-md-4">
+		<div class="well">
+			<h1><%= current_user.username %>'s Profile &amp Tweets</h1>
+			<p><%= image_tag @current_user.avatar.url(:medium) %></p>
+			<p><%= current_user.name %></p>
+			<p><%= current_user.location %></p>
+			<p><%= current_user.bio %></p>
+			<p># of Tweets: <%= current_user.tweets.count %></p>
+			<p>Following: <%= current_user.following.length %></p>
+			<p>Followers: <%= @follower_count %></p>
+		<div>
+	</div>
+</div>
+
+	<h1>Your Twitter Feed</h1>
+		<p>
+			Welcome, <%= link_to show_user_path do %>
+			@<%= current_user.username %>!
+		</p>
+			<% end %>
+		<p>Here's what your friends are saying:</p>
+			<% @following_tweets.each do |tweet| %>
+
+
+	<div class="col-md-2"><%= image_tag tweet.user.avatar.url(:thumb) %></div>
+		<div class="col-md-10">
 			<div class="well">
 			 <p><strong><%= tweet.user.name %></strong> @
 				<%= link_to show_user_path(id: tweet.user_id) do %>
@@ -17,4 +35,5 @@
 			</div>
 		</div>
 	<% end %>
+</div>
 </div>

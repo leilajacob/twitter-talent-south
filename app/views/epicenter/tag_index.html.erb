@@ -1,0 +1,9 @@
+<h1>All Tags</h1>
+<% @tags.each do |tag| %>
+<div class="well">
+	<h3><%= tag.tag_content %></h3>
+	<% tag.tweets.each do |tweet| %>
+		<p>@<%= tweet.user.username %> said: <%= tweet.message %></p>
+	<% end %>
+	</div>
+<% end %>

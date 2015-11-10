@@ -1,0 +1,40 @@
+<button id="celebrate">Celebrate</button>
+
+<p class="hiphip"></p>
+<p class="hiphip"></p>
+
+<style type="text/css">
+	.blue {
+		color: blue;
+	} 
+
+	.gray {
+		color: gray;
+	}
+</style>
+
+
+
+<script>
+$(document).ready(function(){
+    $("#changestyles").click(function(){
+        $("#nowred").css({"color":"red"});
+        $("#nowblue").addClass("blue");
+        $("#wasgray").removeClass("gray");
+    });
+});
+</script>
+
+<p id="nowred">This text will be red.</p>
+<p id="nowblue">This text will be blue.</p>
+<p id="wasgray" class="gray">This text was gray.</p>
+
+<button id="changestyles">Change the Styles</button>
+
+<script>
+$(document).ready(function(){
+    $("#celebrate").hover(function(){
+        $(".hiphip").html("HOORAY!");
+    });
+});
+</script>

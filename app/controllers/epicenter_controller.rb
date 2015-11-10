@@ -14,6 +14,14 @@ class EpicenterController < ApplicationController
   		end
   	end
 
+    @follower_count = 0
+    @users = User.all
+    @users.each do |user|
+      if user.following.include?(current_user.id)
+        follower_count += 1
+      end
+    end
+
   end
 
   def show_user
@@ -35,4 +43,18 @@ class EpicenterController < ApplicationController
 
   	redirect_to show_user_path(id: params[:id])
   end
+
+  def all_users
+    @users = User.all
+  end
+
+  def tag_index
+    @tags = Tag.all
+  end
+
+  
+
+  def jquery_practice 
+  end 
+
 end
