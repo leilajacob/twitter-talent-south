@@ -4,6 +4,8 @@ class EpicenterController < ApplicationController
 
   def feed
 
+    @tweet = Tweet.new
+
   	@following_tweets = []
 
   	@tweets = Tweet.order(created_at: :desc)

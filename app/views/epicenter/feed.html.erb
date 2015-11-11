@@ -17,6 +17,9 @@
 		<p>Welcome, <%= link_to show_user_path do %>
 			@<%= current_user.username %>!
 		<% end %></p>
+
+		<%= render 'tweets/form' %> 
+		
 		<p>Here's what your friends are saying:</p>
 
 		<div class="row">
