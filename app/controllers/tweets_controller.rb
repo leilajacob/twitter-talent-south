@@ -31,16 +31,29 @@ class TweetsController < ApplicationController
     respond_to do |format|
       if @tweet.save
         tweet_array = @tweet.message.split(" ")
+
+        tag_array = Tag.pluck(:tag_content)
+
         if tweet_array.last.start_with?("#")
-          tag = Tag.new
-          tag.tag_content = tweet_array.last
-          tag.save 
-          tweet_tag = TweetTag.new
-          tweet_tag.tweet_id = @tweet.id
-          tweet_tag.tag_id = tag.id
-          tweet_tag.save
+          if tag_array.include?(tweet_array.last)
+            tweet_tag = TweetTag.new
+            tweet_tag.tweet_id = @tweet.id
+            tag = Tag.find_by(tag_content: tweet_array.last)
+            tweet_tag.tag_id = tag.id
+            tweet_tag.save
+          else
+            tag = Tag.new
+            tag.tag_content = tweet_array.last
+            tag.save 
+            tweet_tag = TweetTag.new
+            tweet_tag.tweet_id = @tweet.id
+            tweet_tag.tag_id = tag.id
+            tweet_tag.save
+          end
 
         end
+
+      
 
         format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @tweet }

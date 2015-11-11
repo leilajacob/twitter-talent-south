@@ -52,7 +52,7 @@ class EpicenterController < ApplicationController
     @tags = Tag.all
   end
 
-  
+
 
   def jquery_practice 
   end 

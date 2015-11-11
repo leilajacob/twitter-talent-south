@@ -9,6 +9,10 @@ Rails.application.routes.draw do
 
   get 'all_users' => 'epicenter#all_users'
 
+  get 'all_followers' => 'epicenter#all_followers'
+
+  get 'all_following' => 'epicenter#all_following'
+
   get 'epicenter/jquery_practice' 
 
   get 'tag_index' => 'epicenter#tag_index'

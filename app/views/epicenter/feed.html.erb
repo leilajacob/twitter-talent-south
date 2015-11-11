@@ -12,28 +12,28 @@
 			<p>Followers: <%= @follower_count %></p>
 		<div>
 	</div>
-</div>
-
-	<h1>Your Twitter Feed</h1>
-		<p>
-			Welcome, <%= link_to show_user_path do %>
+	<div class ="col-md-8">
+		<h1>Your Twitter Feed</h1>
+		<p>Welcome, <%= link_to show_user_path do %>
 			@<%= current_user.username %>!
-		</p>
-			<% end %>
+		<% end %></p>
 		<p>Here's what your friends are saying:</p>
+
+		<div class="row">
 			<% @following_tweets.each do |tweet| %>
-
-
-	<div class="col-md-2"><%= image_tag tweet.user.avatar.url(:thumb) %></div>
-		<div class="col-md-10">
-			<div class="well">
-			 <p><strong><%= tweet.user.name %></strong> @
-				<%= link_to show_user_path(id: tweet.user_id) do %>
-			 		<%= tweet.user.username %></p>
-			 	<% end %>
-			 <p><%= tweet.message %></p>
-			</div>
+				<div class="col-md-2">
+					<%= image_tag tweet.user.avatar.url(:thumb) %>
+				</div>
+				<div class="col-md-10">
+					<div class="well">
+						<p><strong><%= tweet.user.name %></strong> @
+						<%= link_to show_user_path(id: tweet.user_id) do %>
+			 				<%= tweet.user.username %></p>
+			 			<% end %>
+			 			<p><%= tweet.message %></p>
+					</div>
+				</div>
+			<% end %>
 		</div>
-	<% end %>
-</div>
+	</div>
 </div>
