@@ -54,6 +54,22 @@ class EpicenterController < ApplicationController
     @tags = Tag.all
   end
 
+  def all_followers
+    @users = []
+    User.all.each do |user|
+      if user.following.include?(current_user.id)
+        @users.push(user)
+      end
+    end 
+  end
+
+  def all_following
+    @users = []
+    current_user.following.each do |x|
+      user = User.find(x)
+      @users.push(user)
+    end
+  end 
 
 
   def jquery_practice 

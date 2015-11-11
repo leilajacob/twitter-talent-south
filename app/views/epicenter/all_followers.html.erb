@@ -1,17 +1,1 @@
-<div class="row">
-	<% @current_users.followers.each do |user| %>
-		<% if user.id != current_user.id %>
-
-			<div class="col-md-4">
-				<%= link_to show_user_path(id: user.id) do %>
-				<div class="well">
-					<p><%= image_tag user.avatar.url(:medium) %></p>
-					<p>@<%= user.username %></p>
-					<p><%= user.name %></p>
-					<p><%= user.location %></p>
-				</div>
-				<% end %>
-			</div>
-		<% end %>
-	<% end %>
-</div>
+<%= render 'userloop' %>
