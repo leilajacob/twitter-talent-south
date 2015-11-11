@@ -11,7 +11,7 @@ class EpicenterController < ApplicationController
   	@tweets = Tweet.order(created_at: :desc)
 
   	@tweets.each do |t|
-  		if current_user.following.include?(t.user_id)
+  		if current_user.following.include?(t.user_id) || current_user.id == t.user_id
   		@following_tweets.push(t)
   		end
   	end

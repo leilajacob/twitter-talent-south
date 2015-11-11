@@ -55,7 +55,7 @@ class TweetsController < ApplicationController
 
       
 
-        format.html { redirect_to @tweet, notice: 'Tweet was successfully created.' }
+        format.html { redirect_to @root_path, notice: 'Tweet was successfully created.' }
         format.json { render :show, status: :created, location: @tweet }
       else
         format.html { render :new }
@@ -81,6 +81,11 @@ class TweetsController < ApplicationController
   # DELETE /tweets/1
   # DELETE /tweets/1.json
   def destroy
+    tweet_tag = TweetTag.find_by(tweet_id: @tweet.id)
+    if tweet_tag != nil
+      tweet_tag.destroy
+    end
+
     @tweet.destroy
     respond_to do |format|
       format.html { redirect_to tweets_url, notice: 'Tweet was successfully destroyed.' }
